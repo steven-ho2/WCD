@@ -11,9 +11,19 @@
     <script>
       var gameInstance = UnityLoader.instantiate("gameContainer", "Build/WebGL Car Demo.json", {onProgress: UnityProgress});
     </script>
+    <script>
+        var u = new UnityObject2();
+        u.initPlugin(jQuery("#unityPlayer")[0], "Example.unity3d");
+
+        function SaySomethingToUnity()
+        {
+          u.getUnity().SendMessage("MyObject", "OpenDoors");
+        }
+    </script>
   </head>
   <body>
     <div class="webgl-content">
+      <button type="button" onclick="SaySomethingToUnity" >Open Doors</button>
       <div id="gameContainer" style="width: 960px; height: 600px"></div>
       <div class="footer">
         <div class="webgl-logo"></div>
